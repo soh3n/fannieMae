@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+    }
+
+    header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+
+    main {
+        margin: 20px;
+    }
+
+    footer {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    nav {
+        background-color: #444;
+        padding: 10px;
+        text-align: center;
+    }
+
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 10px;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+    }
+
+    .eligibility-section {
+        margin: 20px;
+        background-color: #fff;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+
+    .eligibility-box {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f8f8f8;
+    }
+
+    .circle-container {
+        text-align: center;
+    }
+
+    .circle {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: grey;
+        margin-bottom: 10px;
+        display: inline-block;
+        transition: transform 0.3s;
+    }
+
+    .rectangle {
+        width: 500px;
+        height: 100px;
+        background-color: #ccc;
+        margin-bottom: 10px;
+        display: inline-block;
+        transition: transform 0.3s;
+    }
+
+    .enlarged {
+        transform: scale(1.5);
+        background-color: blue;
+    }
+
+    .circle-with-rectangle {
+        display: flex;
+        align-items: center;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 20px;
+        /* Add margin at the top */
+    }
+
+    .pie-chart-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    canvas {
+        margin: 0 10px;
+    }
+</style>
+
+<header>
+    <h1>HowToHouse</h1>
+</header>
+
+<nav>
+    <a href="home.html">HOME</a>
+    <a href="frontend.html">ELIGIBILITY CHECKS</a>
+    <a href="stats.html">TRENDS</a>
+    <a href="calculator.html">CALCULATOR</a>
+</nav>
+
+<head>
+    <title>Pie Chart Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="pie-chart-container">
+            <div>
+                <canvas id="bigPieChart" width="500" height="500"></canvas>
+            </div>
+            <div>
+                <canvas id="smallPieChart1" width="200" height="200"></canvas>
+            </div>
+            <div>
+                <canvas id="smallPieChart2" width="200" height="200"></canvas>
+            </div>
+            <div>
+                <canvas id="smallPieChart3" width="200" height="200"></canvas>
+            </div>
+            <div>
+                <canvas id="smallPieChart4" width="200" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the canvas elements
+            var ctxBig = document.getElementById('bigPieChart').getContext('2d');
+            var ctxSmall1 = document.getElementById('smallPieChart1').getContext('2d');
+            var ctxSmall2 = document.getElementById('smallPieChart2').getContext('2d');
+            var ctxSmall3 = document.getElementById('smallPieChart3').getContext('2d');
+            var ctxSmall4 = document.getElementById('smallPieChart4').getContext('2d');
+
+            // Define data for the pie charts
+            var dataBig = {
+                labels: ['Yes', 'No'],
+                datasets: [{
+                    data: [1490, 8510],
+                    backgroundColor: ['blue', 'red'],
+                }]
+            };
+
+            var dataSmall1 = {
+                labels: ['FEDTI - Y', 'FEDTI - N'],
+                datasets: [{
+                    data: [2376, 7624],
+                    backgroundColor: ['purple', 'orange'],
+                }]
+            };
+
+            var dataSmall2 = {
+                labels: ['DTI - Y', 'DTI - N'],
+                datasets: [{
+                    data: [2187, 7813],
+                    backgroundColor: ['teal', 'gray'],
+                }]
+            };
+
+            var dataSmall3 = {
+                labels: ['LTV - Y With PMI ADDED', 'LTV - Y Without PMI ADDED'],
+                datasets: [{
+                    data: [6438, 3562],
+                    backgroundColor: ['cyan', 'lime'],
+                }]
+            };
+
+            var dataSmall4 = {
+                labels: ['CR - Y', 'CR - N'],
+                datasets: [{
+                    data: [5972, 4028],
+                    backgroundColor: ['lightblue', 'lightpink'],
+                }]
+            };
+
+            // Create the pie charts
+            var bigPieChart = new Chart(ctxBig, {
+                type: 'pie',
+                data: dataBig
+            });
+
+            var smallPieChart1 = new Chart(ctxSmall1, {
+                type: 'pie',
+                data: dataSmall1
+            });
+
+            var smallPieChart2 = new Chart(ctxSmall2, {
+                type: 'pie',
+                data: dataSmall2
+            });
+
+            var smallPieChart3 = new Chart(ctxSmall3, {
+                type: 'pie',
+                data: dataSmall3
+            });
+
+            var smallPieChart4 = new Chart(ctxSmall4, {
+                type: 'pie',
+                data: dataSmall4
+            });
+        });
+    </script>
+
+</body>
+
+</html>
