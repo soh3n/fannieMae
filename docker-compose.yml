@@ -1,0 +1,16 @@
+services:
+  fannieMae:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DATABASE=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5003:5432'
+    volumes:
+      - fannieMae:/var/lib/postgresql/data
+  
+volumes:
+  fannieMae:
+    driver: local

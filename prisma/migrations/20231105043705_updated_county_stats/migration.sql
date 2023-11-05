@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "countyStats" ALTER COLUMN "medianHomeValue" SET DATA TYPE DOUBLE PRECISION,
+ALTER COLUMN "medianAnnualProperty" SET DATA TYPE DOUBLE PRECISION;

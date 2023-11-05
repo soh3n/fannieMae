@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//make email
+model User {
+  id         Int        @id @default(autoincrement())
+  username   String     @unique
+}
+
+model Data {
+    id                          Int     @id
+    grossMonthlyIncome          Int
+    creditCardPayment           Int
+    cardPayment                 Int
+    studentLoanPayments         Int
+    appraisedValue              Int
+    downPayment                 Int
+    loanAmount                  Int
+    monthlyMortgagePayment      Int
+    creditScore                 Int
+    isCredit                    Boolean
+    isLTV                       Boolean
+    isDTI                       Boolean
+    isFEDTI                     Boolean
+    isApproved                  Boolean
+    userId                      Int
+}
+
+model Zipcode {
+  id        Int     @id
+  zipcode   Int
+  city      String
+  county    String
+}
+
+model countyStats {
+  id                        Int   @id
+  county                    String
+  medianHomeValue           Float
+  medianAnnualProperty      Float
+  avgPropertyTaxRate        Float
+}
